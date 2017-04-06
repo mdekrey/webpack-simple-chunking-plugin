@@ -1,0 +1,21 @@
+{
+  "name": "webpack-simple-chunking-plugin",
+  "version": "0.0.1-pre-alpha",
+  "description": "A simple, readable commons chunking plugin",
+  "main": "lib/index.js",
+  "typings": "lib/index",
+  "repository": "https://github.com/mdekrey/webpack-simple-chunking-plugin",
+  "author": "Matt DeKrey <mattdekrey@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/webpack": "^2.2.14",
+    "typescript": "^2.2.2",
+    "webpack": "^2.3.3"
+  },
+  "dependencies": {
+    "tslint": "^5.0.0"
+  }
+}
