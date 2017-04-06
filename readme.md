@@ -30,7 +30,7 @@ Create a vendor chunk, using node_modules in all chunks except the `polyfills` c
       ]
     ]
 
-Create a commons chunk from modules in at least 2 chunks and guarantee it is loaded when your 'app' chunk loads:
+Create a commons chunk from modules in at least 2 chunks and prepare it to be loaded with your 'app' entry chunk:
 
     var {SimpleChunkPlugin} = require('webpack-simple-chunking-plugin');
     var {createCommonChunk} = require('webpack-simple-chunking-plugin/lib/examples/minChunks');
@@ -39,9 +39,7 @@ Create a commons chunk from modules in at least 2 chunks and guarantee it is loa
       plugins: [
         new SimpleChunkPlugin(api => {
             const commons = createCommonChunk(2, false, 'commons')(api)
-
-            const chunks = api.chunkNameMap();
-            api.addChunkAsParent(commons, [chunks.get('app')]);
+            api.addChunkAsParent(commons, this.chunks.filter(chunk => chunk.name === 'app'));
         }),
       ]
     ]
