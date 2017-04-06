@@ -1,12 +1,21 @@
 A chunking plugin that simply makes sense.
 
+This is largely adapted from Tobias Koppers's (@sokra) CommonsChunkPlugin.
+Thanks to him for making such a wonderful MIT-sourced bit of code!
+
+This plugin gives access to the capabilities of webpack's chunking engine...
+along with a powerful and concise api. As a result, there are a number of ways
+to shoot yourself in the foot, so as always with programming, be careful with
+what you do and test thoroughly.
+
 # Installation
 
 This plugin is not yet registered on npm.
 
 # Documentation
 
-Yet to be completed.
+Yet to be completed. However, it is built out using TypeScript, so if that's
+your thing, feel free to read the source code.
 
 # Examples
 
