@@ -1,9 +1,10 @@
 import * as Tapable from 'tapable';
 import { Module } from 'webpack';
 
+/** Specifies  */
 export declare class Block {
-    /** This is some unknown datatype */
     chunks: Chunk[];
+    parent: Module;
 }
 
 export declare class Entrypoint {
@@ -21,7 +22,7 @@ export declare class Chunk {
     chunkReason: string;
     extraAsync: boolean;
     modules: ReadonlyArray<Module>;
-    blocks: ReadonlyArray<Block>;
+    blocks: Block[];
     entrypoints: ReadonlyArray<Entrypoint>;
     origins: { reasons?: string[]; }[]
 

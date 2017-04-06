@@ -1,4 +1,4 @@
-import { ChunkUtilityApi } from '../index';
+import { ChunkUtilityApi } from '../api';
 import { Chunk } from '../types';
 import { Module } from 'webpack';
 
@@ -16,9 +16,8 @@ export const createCommonChunk = (minCount: number, asyncOnly: boolean, name?: s
         .filter(([_module, count]) => count >= minCount)
         .map(([module]) => module);
 
-    const commons = api.addChunk(name);
-    api.addModulesToChunk(commonModules, commons);
-    const affectedChunks = api.removeModulesFromChunks(commonModules, api.chunks.filter(chunk => chunk !== commons));
-    api.addChunkAsParent(commons, affectedChunks);
+    // create the new chunk and move the modules
+    const commons = api.createChunkFrom(api.chunks, commonModules, name);
+
     return commons
 }
