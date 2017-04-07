@@ -8,10 +8,22 @@
   "author": "Matt DeKrey <mattdekrey@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tslint --type-check --project ./tsconfig.json src/**/*.ts && tsc"
+    "build": "npm run lint && npm run ts",
+    "test": "npm run lint && npm run mocha",
+
+    "mocha": "mocha --compilers ts:ts-node/register --colors --reporter min ./src/**/*.test.ts",
+    "lint": "tslint --type-check --project ./tsconfig.json src/**/*.ts",
+    "ts": "tsc"
   },
   "devDependencies": {
+    "@types/chai": "3.4.35",
+    "@types/memory-fs": "0.3.0",
+    "@types/mocha": "2.2.40",
     "@types/webpack": "^2.2.14",
+    "chai": "3.5.0",
+    "memory-fs": "0.4.1",
+    "mocha": "3.2.0",
+    "ts-node": "3.0.2",
     "typescript": "^2.2.2",
     "webpack": "^2.3.3",
     "tslint": "^4.5.1"

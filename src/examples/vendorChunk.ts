@@ -1,6 +1,6 @@
-import { ChunkUtilityApi } from '../api';
-import { Chunk } from '../types';
-import { Module } from 'webpack';
+import { ChunkUtilityApi } from "../api";
+import { Chunk } from "../types";
+import { Module } from "webpack";
 
 export const createVendorChunk = (...excludingChunkNames: string[]) => (api: ChunkUtilityApi) => {
     const chunks = api.chunkNameMap();
@@ -15,6 +15,6 @@ export const createVendorChunk = (...excludingChunkNames: string[]) => (api: Chu
     }, new Set<Module>()));
 
     // create the new chunk and move the modules modules
-    const vendor = api.createChunkFrom(otherChunks, vendorModules, 'vendor');
+    const vendor = api.createChunkFrom(otherChunks, vendorModules, "vendor");
     return vendor;
 };

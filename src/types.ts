@@ -1,5 +1,5 @@
-import * as Tapable from 'tapable';
-import { Module } from 'webpack';
+import * as Tapable from "tapable";
+import { Module } from "webpack";
 
 /** Specifies  */
 export declare class Block {
@@ -40,7 +40,7 @@ export declare class Compilation extends Tapable {
     addChunk(chunkName?: string): Chunk;
 }
 
-declare module 'webpack' {
+declare module "webpack" {
     interface BaseModule {
         resource?: string;
         chunkCondition(chunk: Chunk): boolean;

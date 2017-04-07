@@ -1,6 +1,6 @@
 
-import { Module } from 'webpack';
-import { Chunk, Compilation } from './types';
+import { Module } from "webpack";
+import { Chunk, Compilation } from "./types";
 
 /**
  * The main utility API for chunking

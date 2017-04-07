@@ -1,6 +1,6 @@
-import { ChunkUtilityApi } from '../api';
-import { Chunk } from '../types';
-import { Module } from 'webpack';
+import { ChunkUtilityApi } from "../api";
+import { Chunk } from "../types";
+import { Module } from "webpack";
 
 export const createCommonChunk = (minCount: number, asyncOnly: boolean, name?: string) => (api: ChunkUtilityApi): Chunk => {
     const moduleUseCounts =

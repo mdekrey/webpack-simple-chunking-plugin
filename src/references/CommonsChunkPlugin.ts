@@ -4,8 +4,8 @@
 
     Converted to TypeScript by Matt DeKrey
 */
-import { Compiler, Module, Plugin } from 'webpack';
-import { Chunk, Compilation } from '../types';
+import { Compiler, Module, Plugin } from "webpack";
+import { Chunk, Compilation } from "../types";
 
 type MinChunkCheck = (module: Module, count: number) => boolean;
 
@@ -78,7 +78,7 @@ The available options are:
             };
         }
 
-        if (typeof options === 'string') {
+        if (typeof options === "string") {
             return {
                 chunkNames: [options],
             };
@@ -86,7 +86,7 @@ The available options are:
 
         // options.children and options.chunk may not be used together
         if (options.children && options.chunks) {
-            throw new Error('You can\'t and it does not make any sense to use "children" and "chunk" options together.');
+            throw new Error("You can't and it does not make any sense to use \"children\" and \"chunk\" options together.");
         }
 
         /**
@@ -117,8 +117,8 @@ You can however specify the name of the async chunk by passing the desired strin
     }
 
     apply(compiler: Compiler) {
-        compiler.plugin('this-compilation', (compilation: Compilation) => {
-            compilation.plugin(['optimize-chunks', 'optimize-extracted-chunks'], (chunks: Chunk[]) => {
+        compiler.plugin("this-compilation", (compilation: Compilation) => {
+            compilation.plugin(["optimize-chunks", "optimize-extracted-chunks"], (chunks: Chunk[]) => {
                 // only optimize once
                 if (compilation[this.ident]) {
                     return;
@@ -283,7 +283,7 @@ Take a look at the "name"/"names" or async/children option.`);
          */
         if (targetChunk.parents.length > 0) {
             compilation.errors.push(new Error(
-                'CommonsChunkPlugin: While running in normal mode it\'s not allowed to use a non-entry chunk (' + targetChunk.name + ')',
+                "CommonsChunkPlugin: While running in normal mode it's not allowed to use a non-entry chunk (" + targetChunk.name + ")",
             ));
             return;
         }
@@ -308,8 +308,8 @@ Take a look at the "name"/"names" or async/children option.`);
     }
 
     createAsyncChunk(compilation: Compilation, asyncOption: boolean | string, targetChunk: Chunk) {
-        const asyncChunk = compilation.addChunk(typeof asyncOption === 'string' ? asyncOption : undefined);
-        asyncChunk.chunkReason = 'async commons chunk';
+        const asyncChunk = compilation.addChunk(typeof asyncOption === "string" ? asyncOption : undefined);
+        asyncChunk.chunkReason = "async commons chunk";
         asyncChunk.extraAsync = true;
         asyncChunk.addParent(targetChunk);
         targetChunk.addChunk(asyncChunk);
@@ -319,7 +319,7 @@ Take a look at the "name"/"names" or async/children option.`);
     // If minChunks is a function use that
     // otherwhise check if a module is used at least minChunks or 2 or usedChunks.length time
     getModuleFilter(minChunks: number | MinChunkCheck | undefined, _targetChunk: Chunk, usedChunksLength: number) {
-        if (typeof minChunks === 'function') {
+        if (typeof minChunks === "function") {
             return minChunks;
         }
         const minCount = (minChunks || Math.max(2, usedChunksLength));
@@ -327,7 +327,7 @@ Take a look at the "name"/"names" or async/children option.`);
         return isUsedAtLeastMinTimes;
     }
 
-    getExtractableModules(minChunks: CommonsChunkPlugin['minChunks'], usedChunks: Chunk[], targetChunk: Chunk) {
+    getExtractableModules(minChunks: CommonsChunkPlugin["minChunks"], usedChunks: Chunk[], targetChunk: Chunk) {
         if (minChunks === Infinity) {
             return [];
         }
@@ -410,7 +410,7 @@ Take a look at the "name"/"names" or async/children option.`);
         for (const chunk of chunks) {
             for (const origin of chunk.origins) {
                 const newOrigin = Object.create(origin);
-                newOrigin.reasons = (origin.reasons || []).concat('async commons');
+                newOrigin.reasons = (origin.reasons || []).concat("async commons");
                 origins.push(newOrigin);
             }
         }
