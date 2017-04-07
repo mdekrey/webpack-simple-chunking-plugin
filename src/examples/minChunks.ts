@@ -10,7 +10,7 @@ export const createCommonChunk = (minCount: number, asyncOnly: boolean, name?: s
                 map.set(module, count + 1);
             }
             return map;
-        }, new Map<Module, number>())
+        }, new Map<Module, number>());
 
     const commonModules = Array.from(moduleUseCounts)
         .filter(([_module, count]) => count >= minCount)
@@ -19,5 +19,5 @@ export const createCommonChunk = (minCount: number, asyncOnly: boolean, name?: s
     // create the new chunk and move the modules
     const commons = api.createChunkFrom(api.chunks, commonModules, name);
 
-    return commons
-}
+    return commons;
+};

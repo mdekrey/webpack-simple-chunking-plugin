@@ -1,16 +1,20 @@
 
-import { Compiler, Plugin } from 'webpack'
-import { Chunk, Compilation } from './types'
-import { ChunkUtilityApi } from './api'
+import { Compiler, Plugin } from 'webpack';
+import { Chunk, Compilation } from './types';
+import { ChunkUtilityApi } from './api';
 
 let nextIdent = 0;
 export class SimpleChunkPlugin implements Plugin {
-    private chunksCallback: (api: ChunkUtilityApi) => void;
     private ident: string;
 
-    constructor(chunksCallback: (api: ChunkUtilityApi) => void) {
+    /**
+     * Creates a new simple chunk plugin
+     * @param chunksCallback The callback that will receive the API
+     */
+    constructor(
+        private chunksCallback: (api: ChunkUtilityApi) => void,
+    ) {
         this.ident = __filename + (nextIdent++);
-        this.chunksCallback = chunksCallback;
     }
 
     apply(compiler: Compiler): void {

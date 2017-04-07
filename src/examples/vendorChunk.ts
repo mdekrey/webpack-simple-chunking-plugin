@@ -17,4 +17,4 @@ export const createVendorChunk = (...excludingChunkNames: string[]) => (api: Chu
     // create the new chunk and move the modules modules
     const vendor = api.createChunkFrom(otherChunks, vendorModules, 'vendor');
     return vendor;
-}
+};

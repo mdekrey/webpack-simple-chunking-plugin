@@ -8,6 +8,10 @@ along with a powerful and concise api. As a result, there are a number of ways
 to shoot yourself in the foot, so as always with programming, be careful with
 what you do and test thoroughly.
 
+Please note that currently, all my use-cases include SPA applications. As such,
+the methods for `isAsync` are targetted for those purposes. I would be happy to
+support more use-cases, but I will need community contributions to do so.
+
 # Installation
 
 This plugin is not yet registered on npm.

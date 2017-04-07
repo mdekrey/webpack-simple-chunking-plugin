@@ -8,14 +8,14 @@
   "author": "Matt DeKrey <mattdekrey@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tslint --type-check --project ./tsconfig.json src/**/*.ts && tsc"
   },
   "devDependencies": {
     "@types/webpack": "^2.2.14",
     "typescript": "^2.2.2",
-    "webpack": "^2.3.3"
+    "webpack": "^2.3.3",
+    "tslint": "^4.5.1"
   },
   "dependencies": {
-    "tslint": "^5.0.0"
   }
 }

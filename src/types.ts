@@ -24,7 +24,7 @@ export declare class Chunk {
     modules: ReadonlyArray<Module>;
     blocks: Block[];
     entrypoints: ReadonlyArray<Entrypoint>;
-    origins: { reasons?: string[]; }[]
+    origins: { reasons?: string[]; }[];
 
     addBlock(block: Block): void;
     addModule(module: Module): void;
