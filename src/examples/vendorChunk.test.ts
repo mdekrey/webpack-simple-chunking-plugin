@@ -3,17 +3,17 @@ import { expect } from "chai";
 import path = require("path");
 
 import { SimpleChunkPlugin } from "../index";
-import { createCommonChunk } from "./minChunks";
+import { createVendorChunk } from "./vendorChunk";
 import { ICompilerResults, simpleCompile } from "./webpackCompiler";
 
-describe("minChunks example", () => {
+describe("vendor example", () => {
     let compilerResults: ICompilerResults;
 
     before((done) => {
         simpleCompile(
-            { example: path.resolve(__dirname, "./minChunks.example.js") },
+            { example: path.resolve(__dirname, "./vendorChunk.example.js") },
             [
-                new SimpleChunkPlugin(createCommonChunk(2, true, "commons")),
+                new SimpleChunkPlugin(createVendorChunk()),
             ],
             results => {
                 compilerResults = results;
@@ -22,10 +22,10 @@ describe("minChunks example", () => {
         );
     });
 
-    it("produces an example chunk, a common chunk, and two other chunks", () => {
-        expect(compilerResults.chunks.length).to.equal(4);
+    it("produces an example chunk, and a vendor chunk", () => {
+        expect(compilerResults.chunks.length).to.equal(3);
         expect(compilerResults.chunks.find(chunk => chunk.name === "example")).not.to.be.an("undefined");
-        expect(compilerResults.chunks.find(chunk => chunk.name === "commons")).not.to.be.an("undefined");
+        expect(compilerResults.chunks.find(chunk => chunk.name === "vendor")).not.to.be.an("undefined");
     });
 
     it("produces files for the chunks", () => {

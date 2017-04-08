@@ -17,6 +17,7 @@ export declare class Entrypoint {
 export declare class Chunk {
     name: string;
     filenameTemplate: string;
+    files: string[];
     chunks: ReadonlyArray<Chunk>;
     parents: ReadonlyArray<Chunk>;
     chunkReason: string;
