@@ -1,5 +1,7 @@
 A chunking plugin that simply makes sense.
 
+[![tests][tests]][tests-url]
+
 This is largely adapted from Tobias Koppers's (@sokra) CommonsChunkPlugin.
 Thanks to him for making such a wonderful MIT-sourced bit of code!
 
@@ -50,3 +52,7 @@ Create a commons chunk from modules in at least 2 chunks and prepare it to be lo
     ]
 
 You can add multiple of these plugins back-to-back, or write your own logic with the api provided.
+
+
+[tests]: https://img.shields.io/travis/mdekrey/webpack-simple-chunking-plugin/master.svg
+[tests-url]: https://travis-ci.org/mdekrey/webpack-simple-chunking-plugin
