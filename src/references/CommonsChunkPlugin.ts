@@ -334,7 +334,7 @@ Take a look at the "name"/"names" or async/children option.`);
 
         // count how many chunks contain a module
         const commonModulesToCountMap = usedChunks.reduce((map, chunk) => {
-            for (const module of chunk.modules) {
+            for (const module of chunk.modulesIterable) {
                 const count = map.has(module) ? map.get(module)! : 0;
                 map.set(module, count + 1);
             }

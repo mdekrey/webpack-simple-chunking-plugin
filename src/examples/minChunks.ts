@@ -5,7 +5,7 @@ import { Module } from "webpack";
 export const createCommonChunk = (minCount: number, asyncOnly: boolean, name?: string) => (api: ChunkUtilityApi): Chunk => {
     const moduleUseCounts =
         api.chunks.filter(chunk => asyncOnly ? chunk.entrypoints.length === 0 : true).reduce((map, chunk) => {
-            for (const module of chunk.modules) {
+            for (const module of chunk.modulesIterable) {
                 const count = map.has(module) ? map.get(module)! : 0;
                 map.set(module, count + 1);
             }

@@ -7,7 +7,7 @@ export const createVendorChunk = (...excludingChunkNames: string[]) => (api: Chu
     const excludedChunks = excludingChunkNames.map(chunkName => chunks.get(chunkName)).filter(Boolean) as Chunk[];
     const otherChunks = api.chunks.filter(chunk => excludedChunks.indexOf(chunk) === -1);
     const vendorModules = Array.from(otherChunks.reduce((set, chunk) => {
-        const modules = chunk.modules.filter(m => m.resource && /[\\/]node_modules[\\/]/.exec(m.resource));
+        const modules = chunk.getModules().filter(m => m.resource && /[\\/]node_modules[\\/]/.exec(m.resource));
         for (const module of modules) {
             set.add(module);
         }

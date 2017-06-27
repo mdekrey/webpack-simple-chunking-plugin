@@ -1,6 +1,6 @@
 {
   "name": "webpack-simple-chunking-plugin",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A simple, readable commons chunking plugin",
   "main": "lib/index.js",
   "typings": "lib/index",
@@ -28,7 +28,7 @@
     "ts-node": "3.0.2",
     "tslint": "^4.5.1",
     "typescript": "^2.2.2",
-    "webpack": "^2.3.3"
+    "webpack": "^3.0.0"
   },
   "dependencies": {}
 }

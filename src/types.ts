@@ -22,13 +22,19 @@ export declare class Chunk {
     parents: ReadonlyArray<Chunk>;
     chunkReason: string;
     extraAsync: boolean;
-    modules: ReadonlyArray<Module>;
     blocks: Block[];
     entrypoints: ReadonlyArray<Entrypoint>;
     origins: { reasons?: string[]; }[];
 
+    modulesIterable: Iterable<Module>;
+    addModule(module: Module): boolean;
+    removeModule(module: Module): boolean;
+    getNumberOfModules(): number;
+    forEachModule(callback: (module: Module) => void): void;
+    mapModules<T>(callback: (module: Module) => T): T[];
+    getModules(): Module[];
+
     addBlock(block: Block): void;
-    addModule(module: Module): void;
     addChunk(chunk: Chunk): void;
     addParent(chunk: Chunk): void;
 
